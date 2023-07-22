@@ -1,0 +1,30 @@
+tcel = project("tcel", Language.C, BinType.StaticLib)
+tcel.AddSourceGlob("src/**.c")
+tcel.AddIncludePath("include", true)
+
+function add_test()
+    log.info("Added test")
+    tcel_test = project("tecl-test", Language.C, BinType.ConsoleApp)
+    tcel_test.AddSourceGlob("test/**c")
+    tcel_test.AddIncludePath("test/")
+    tcel_test.AddDep(tcel)
+    if BuildConf.Config == "debug" then
+        tcel_test.Symbols = true
+    end
+end
+
+if BuildConf.Config == "debug" then
+    tcel.Symbols = true
+end
+
+--Is this hacky? Yes, very much.
+--Borz needs a way to tell sub-scripts if its being used for deps.
+if _G["tcel_include_tests"] == nil then
+    --Not defined assume local build so compile tests
+    add_test()
+else
+    if _G["tcel_include_tests"] then
+        --okay they really do want tests.
+        add_test()
+    end
+end
