@@ -4,10 +4,13 @@ tcel.AddIncludePath("include", true)
 
 function add_test()
     log.info("Added test")
+    tcel.AddDefine("TCEL_ALLOW_CUSTOM_MALLOC")
+
     tcel_test = project("tecl-test", Language.C, BinType.ConsoleApp)
     tcel_test.AddSourceGlob("test/**c")
     tcel_test.AddIncludePath("test/")
     tcel_test.AddDep(tcel)
+    tcel_test.AddDefine("TCEL_ALLOW_CUSTOM_MALLOC")
     if BuildConf.Config == "debug" then
         tcel_test.Symbols = true
     end
