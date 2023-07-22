@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CLionExternalBuildManager">
+    <target id="217343d4-e8c6-4461-ac30-cf0a72cf6737" name="Borz" defaultType="TOOL">
+      <configuration id="f6447281-abde-4fbe-a79b-5bab6f6e2f11" name="Borz">
+        <build type="TOOL">
+          <tool actionId="Tool_External Tools_Borz Compile" />
+        </build>
+        <clean type="TOOL">
+          <tool actionId="Tool_External Tools_Borz Clean" />
+        </clean>
+      </configuration>
+    </target>
+  </component>
+</project>
